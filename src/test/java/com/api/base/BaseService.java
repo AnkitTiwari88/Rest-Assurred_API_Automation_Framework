@@ -2,6 +2,7 @@ package com.api.base;
 
 import static io.restassured.RestAssured.*;
 
+import com.api.models.request.LoginRequest;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
@@ -18,7 +19,7 @@ public class BaseService {
         requestSpecification = given().baseUri(BASE_URL);
     }
 
-    protected Response postRequest(String payload, String endpoint) {
+    protected Response postRequest(Object payload, String endpoint) {
         return requestSpecification.contentType(ContentType.JSON).body(payload).post(endpoint);
     }
 
